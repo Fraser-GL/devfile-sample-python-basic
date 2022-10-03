@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello World! I have updated this code"
+    return "Hello World! I have updated this code to use a database"
 
 def get_database():
     CONNECTION_STRING = "mongodb.fraser-brown-dev.svc.cluster.local"
