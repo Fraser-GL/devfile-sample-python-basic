@@ -13,7 +13,7 @@ def get_database():
     client = pymongo.MongoClient(CONNECTION_STRING)
  
     db = client.testTable
-    print(os.environ('DB_USER'))
+    print(os.environ['DB_USER'])
     # client.authenticate()
     # people = db.people
     # personDocument = {
