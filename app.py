@@ -1,6 +1,7 @@
 from flask import Flask
 import os
 import pymongo 
+import logging
 
 app = Flask(__name__)
 
@@ -13,7 +14,7 @@ def get_database():
     client = pymongo.MongoClient(CONNECTION_STRING)
  
     db = client.testTable
-    print(os.environ['DB_USER'])
+    app.logger.info(os.environ['DB_USER'])
     # client.authenticate()
     # people = db.people
     # personDocument = {
