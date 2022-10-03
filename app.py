@@ -23,7 +23,7 @@ def get_database():
     #     "views": 1250000
     # } 
     # people.insert_one(personDocument)
-    return client['testTable']
+    return 'this is for the real ones at home'
   
 
 if __name__ == '__main__':
