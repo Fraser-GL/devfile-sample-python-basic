@@ -14,13 +14,13 @@ def get_database():
  
     db = client.testTable
 
-    people = db.people
-    personDocument = {
-        "name": { "first": "Alan", "last": "Turing" },
-        "contribs": [ "Turing machine", "Turing test", "Turingery" ],
-        "views": 1250000
-    } 
-    people.insert_one(personDocument)
+    # people = db.people
+    # personDocument = {
+    #     "name": { "first": "Alan", "last": "Turing" },
+    #     "contribs": [ "Turing machine", "Turing test", "Turingery" ],
+    #     "views": 1250000
+    # } 
+    # people.insert_one(personDocument)
     return client['testTable']
   
 
