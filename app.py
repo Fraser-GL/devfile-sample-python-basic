@@ -1,4 +1,4 @@
-rom flask import Flask
+from flask import Flask
 import os
 import pymongo 
 
