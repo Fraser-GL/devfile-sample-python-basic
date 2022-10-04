@@ -24,11 +24,9 @@ def hello():
     } 
     people.insert_one(personDocument)
     
-    peopleString = ''
-    for x in people:
-        peopleString += str(x)
+    turing = people.find_one({ "name.last": "Turing" })
 
-    return "Hello World! I have updated this code to use a database " + peopleString
+    return "Hello World! I have updated this code to use a database " + turing
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
