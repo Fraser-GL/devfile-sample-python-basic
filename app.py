@@ -22,14 +22,14 @@ def hello():
 
 @app.route('/add/<username>')
 def profile(username):
-    db = connect();
-    people = db.people
-    personDocument = {
-        "name": { "first": "Alan", "last": username},
-        "contribs": [ "Turing machine", "Turing test", "Turingery" ],
-        "views": 1250000
-    } 
-    people.insert_one(personDocument)
+    # db = connect();
+    # people = db.people
+    # personDocument = {
+    #     "name": { "first": "Alan", "last": username},
+    #     "contribs": [ "Turing machine", "Turing test", "Turingery" ],
+    #     "views": 1250000
+    # } 
+    # people.insert_one(personDocument)
     return f'{username}\'s profile has been created'
 
 @app.route('/user/<username>')
