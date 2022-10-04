@@ -24,7 +24,11 @@ def hello():
     } 
     people.insert_one(personDocument)
     
-    return "Hello World! I have updated this code to use a database" + people
+    peopleString = ''
+    for x in people:
+        peopleString += str(x)
+
+    return "Hello World! I have updated this code to use a database " + peopleString
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
