@@ -32,11 +32,11 @@ def profile(username):
     # people.insert_one(personDocument)
     return f'{username}\'s profile has been created'
 
-@app.route('/user/<username>')
-def lookup(username):
+@app.route('/user/')
+def lookup():
     db = connect();
     people = db.people
-    turing = people.find_one({ "name.last": username })
+    turing = people.find_one({ "name.last": 'Turing' })
 
     return str(turing)
 
