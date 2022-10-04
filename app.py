@@ -26,7 +26,7 @@ def hello():
     
     turing = people.find_one({ "name.last": "Turing" })
 
-    return "Hello World! I have updated this code to use a database " + turing
+    return "Hello World! I have updated this code to use a database " + str(turing)
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
