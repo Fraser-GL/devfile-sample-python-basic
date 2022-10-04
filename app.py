@@ -21,7 +21,7 @@ def hello():
     return "Hello World! use the user page to look up details"
 
 @app.route('/test')
-def hello():
+def test():
     return "This is a test"
 
 @app.route('/add/<username>')
