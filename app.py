@@ -17,12 +17,12 @@ def hello():
  
     db = client.sampledb
     people = db.people
-    personDocument = {
-        "name": { "first": "Alan", "last": "Turing" },
-        "contribs": [ "Turing machine", "Turing test", "Turingery" ],
-        "views": 1250000
-    } 
-    people.insert_one(personDocument)
+    # personDocument = {
+    #     "name": { "first": "Alan", "last": "Turing" },
+    #     "contribs": [ "Turing machine", "Turing test", "Turingery" ],
+    #     "views": 1250000
+    # } 
+    # people.insert_one(personDocument)
     
     turing = people.find_one({ "name.last": "Turing" })
 
