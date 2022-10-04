@@ -20,7 +20,7 @@ def hello():
     # } 
     # people.insert_one(personDocument)
     
-    return "Hello World! I have updated this code to use a database" + os.environ.get('DB_USER')
+    return "Hello World! I have updated this code to use a database <br/>" + os.environ.get('DB_USER') + ' <br/>' + os.environ.get('DB_PASS')+ ' <br/>' + os.environ.get('DB_NAME')
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
