@@ -21,17 +21,16 @@ def hello():
     return "Hello World! use the user page to look up details"
 
 
-
 @app.route('/add/<username>')
 def profile(username):
-    # db = connect();
-    # people = db.people
-    # personDocument = {
-    #     "name": { "first": "Alan", "last": username},
-    #     "contribs": [ "Turing machine", "Turing test", "Turingery" ],
-    #     "views": 1250000
-    # } 
-    # people.insert_one(personDocument)
+    db = connect();
+    people = db.people
+    personDocument = {
+        "name": { "first": "Alan", "last": username},
+        "contribs": [ "Turing machine", "Turing test", "Turingery" ],
+        "views": 1250000
+    } 
+    people.insert_one(personDocument)
     return f'{username}\'s profile has been created'
 
 @app.route('/user')
@@ -41,11 +40,6 @@ def lookup():
     turing = people.find_one({ "name.last": 'Turing' })
 
     return str(turing)
-
-@app.get('/find')
-def find():
-    
-    return 'hello there'
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
