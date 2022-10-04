@@ -8,19 +8,22 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     CONNECTION_STRING = "mongodb.fraser-brown-dev.svc.cluster.local"
-    client = pymongo.MongoClient(CONNECTION_STRING)
+    client = pymongo.MongoClient(CONNECTION_STRING,
+                                username= os.environ.get('DB_USER'),
+                                password=  os.environ.get('DB_PASS'),
+                                authSource=  os.environ.get('DB_NAME'),
+                                authMechanism='SCRAM-SHA-256')
  
-    db = client.testTable
-    # client.authenticate()
-    # people = db.people
-    # personDocument = {
-    #     "name": { "first": "Alan", "last": "Turing" },
-    #     "contribs": [ "Turing machine", "Turing test", "Turingery" ],
-    #     "views": 1250000
-    # } 
-    # people.insert_one(personDocument)
+    db = client.sampledb
+    people = db.people
+    personDocument = {
+        "name": { "first": "Alan", "last": "Turing" },
+        "contribs": [ "Turing machine", "Turing test", "Turingery" ],
+        "views": 1250000
+    } 
+    people.insert_one(personDocument)
     
-    return "Hello World! I have updated this code to use a database <br/>" + os.environ.get('DB_USER') + ' <br/>' + os.environ.get('DB_PASS')+ ' <br/>' + os.environ.get('DB_NAME')
+    return "Hello World! I have updated this code to use a database"
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
