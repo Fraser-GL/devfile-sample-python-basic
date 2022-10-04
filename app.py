@@ -20,6 +20,10 @@ def connect():
 def hello():
     return "Hello World! use the user page to look up details"
 
+@app.route('/test')
+def hello():
+    return "This is a test"
+
 @app.route('/add/<username>')
 def profile(username):
     # db = connect();
@@ -32,7 +36,7 @@ def profile(username):
     # people.insert_one(personDocument)
     return f'{username}\'s profile has been created'
 
-@app.route('/user/')
+@app.route('/user')
 def lookup():
     db = connect();
     people = db.people
