@@ -12,7 +12,7 @@ def hello():
                                 username= os.environ.get('DB_USER'),
                                 password=  os.environ.get('DB_PASS'),
                                 authSource=  os.environ.get('DB_NAME'),
-                                authMechanism='SCRAM-SHA-256')
+                                authMechanism='SCRAM-SHA-1')
  
     db = client.sampledb
     people = db.people
