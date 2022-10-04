@@ -6,8 +6,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello():
+def connect():
     CONNECTION_STRING = "mongodb.fraser-brown-dev.svc.cluster.local"
     client = pymongo.MongoClient(CONNECTION_STRING,
                                 username= os.environ.get('DB_USER'),
@@ -15,18 +14,31 @@ def hello():
                                 authSource=  os.environ.get('DB_NAME'),
                                 authMechanism='SCRAM-SHA-1')
  
-    db = client.sampledb
-    people = db.people
-    # personDocument = {
-    #     "name": { "first": "Alan", "last": "Turing" },
-    #     "contribs": [ "Turing machine", "Turing test", "Turingery" ],
-    #     "views": 1250000
-    # } 
-    # people.insert_one(personDocument)
-    
-    turing = people.find_one({ "name.last": "Turing" })
+    return client.sampledb
 
-    return "Hello World! I have updated this code to use a database " + str(turing)
+@app.route('/')
+def hello():
+    return "Hello World! use the user page to look up details"
+
+@app.route('/add/<username>')
+def profile(username):
+    db = connect();
+    people = db.people
+    personDocument = {
+        "name": { "first": "Alan", "last": username},
+        "contribs": [ "Turing machine", "Turing test", "Turingery" ],
+        "views": 1250000
+    } 
+    people.insert_one(personDocument)
+    return f'{username}\'s profile has been created'
+
+@app.route('/user/<username>')
+def profile(username):
+    db = connect();
+    people = db.people
+    turing = people.find_one({ "name.last": username })
+
+    return str(turing)
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
