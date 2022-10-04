@@ -33,7 +33,7 @@ def profile(username):
     return f'{username}\'s profile has been created'
 
 @app.route('/user/<username>')
-def profile(username):
+def lookup(username):
     db = connect();
     people = db.people
     turing = people.find_one({ "name.last": username })
