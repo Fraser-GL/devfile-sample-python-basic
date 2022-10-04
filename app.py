@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import os
 import pymongo 
 import logging
@@ -20,9 +20,7 @@ def connect():
 def hello():
     return "Hello World! use the user page to look up details"
 
-@app.route('/test')
-def test():
-    return "This is a test"
+
 
 @app.route('/add/<username>')
 def profile(username):
@@ -43,6 +41,11 @@ def lookup():
     turing = people.find_one({ "name.last": 'Turing' })
 
     return str(turing)
+
+@app.get('/find')
+def find():
+    
+    return 'hello there'
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
