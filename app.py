@@ -47,8 +47,6 @@ def postApi():
     people = db.people
     personDocument = {
         "name": { "first" : request.form['first'],"last" : request.form['last']},
-        "contribs": [ "Turing machine", "Turing test", "Turingery" ],
-        "views": 1250000
     } 
     people.insert_one(personDocument)
     
