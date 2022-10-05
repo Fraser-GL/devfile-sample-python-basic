@@ -1,3 +1,4 @@
+import re
 from flask import Flask, request
 import os
 import pymongo 
@@ -44,7 +45,12 @@ def lookup(username):
 def postApi():
     db = connect();
     people = db.people
-    people.insert_one(request.form)
+    people.insert_one({
+        "name" : {
+            "first" : request.form['first'],
+            "last" : request.form['last'] 
+        }
+    })
     
     return str(request.form['hello'])
 
