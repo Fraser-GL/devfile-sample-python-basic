@@ -5,6 +5,10 @@ import pymongo
 import logging
 import json
 
+# Debugging :
+# Make sure that both instances have pods running
+# Check you arent connected via https
+
 app = Flask(__name__)
 
 def connect():
