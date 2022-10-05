@@ -42,8 +42,7 @@ def lookup(username):
 
 @app.post('/add')
 def postApi():
-    print(request)
-    return str(request)
+    return str(request.form['hello'])
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
