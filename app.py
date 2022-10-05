@@ -42,6 +42,10 @@ def lookup(username):
 
 @app.post('/add')
 def postApi():
+    db = connect();
+    people = db.people
+    people.insert_one(request.form)
+    
     return str(request.form['hello'])
 
 if __name__ == '__main__':
