@@ -40,6 +40,10 @@ def lookup(username):
     turing = people.find_one({ "name.last": username })
     return str(turing)
 
+@app.post('/add')
+def postApi():
+    print(request)
+
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
     port = int(port)
