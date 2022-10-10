@@ -49,7 +49,7 @@ def lookup(username):
 def postApi():
     db = connect();
     people = db.people
-    personDocument = request.form
+    personDocument = {...(request.form)}
     
     people.insert_one(personDocument)
     
