@@ -49,9 +49,8 @@ def lookup(username):
 def postApi():
     db = connect();
     people = db.people
-    personDocument = {
-        "name": { "first" : request.form['first'],"last" : request.form['last']},
-    } 
+    personDocument = request.form
+    
     people.insert_one(personDocument)
     
     return str(request.form['hello'])
