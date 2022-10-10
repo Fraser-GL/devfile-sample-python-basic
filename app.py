@@ -49,11 +49,22 @@ def lookup(username):
 def postApi():
     db = connect();
     people = db.people
-    personDocument = {...(request.form)}
-    
+    personDocument = {
+        "name": { 
+            "first" : request.form['first'],
+            "last" : request.form['last']
+            },
+    } 
     people.insert_one(personDocument)
     
     return str(request.form['hello'])
+
+@app.get('/get')
+def getApi():
+    db = connect();
+    people = db.people
+    turing = people.find_one({ request.form['search']: request.form['value'] })
+    return str(turing)
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
